@@ -94,7 +94,7 @@
 
     <!--web mvc 설정하기 -->
     <!--resource 설정하기 -->
-    <mvc:resources mapping="/resources/**" location="/resources" />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
 
     <!--
         기본 viewresolver 등록하기
@@ -105,6 +105,7 @@
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="suffix" value=".jsp"/>
         <property name="prefix" value="/WEB-INF/views/"/>
+
         <!--파일 [/WEB-INF/views/test/beantest.jsp]을(를) 찾을 수 없습니다. 로 jsp를 찾는 기본설정을 함.-->
     </bean>
 </beans>
