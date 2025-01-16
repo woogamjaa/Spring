@@ -53,6 +53,32 @@
             </div>
 
             <div class="form-group row">
+                <label for="devEmail" class="col-sm-2 col-form-label">시도</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="sido" name="sido">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="devEmail" class="col-sm-2 col-form-label">군구</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="gungu" name="gungu">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="devEmail" class="col-sm-2 col-form-label">동</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="dong" name="dong">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="devEmail" class="col-sm-2 col-form-label">생년월일</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="birthday" name="birthday">
+                </div>
+            </div>
+
+            <div class="form-group row">
                 <div class="col-sm-12">
                     <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo1.do')">
                         servlet처럼 controller 이용하기
@@ -64,6 +90,57 @@
                 <div class="col-sm-12">
                     <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo2.do')">
                      파라미터 직접받아 처리하기 (1:1매칭)
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo3.do')">
+                        @Request 파라미터 이용하기
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo4.do')">
+                        Command 객체 이용해서 저장하기.
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo5.do')">
+                        Map 객체 이용해서 저장하기.
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo6.do')">
+                        추가정보 가져오기
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo7.do')">
+                        mv응답하기.
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12" onclick="requestTest('demo8.do')">
+                        ResponsBody 응답하기.
                     </button>
                 </div>
             </div>
