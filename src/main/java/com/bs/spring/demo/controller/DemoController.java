@@ -2,10 +2,13 @@ package com.bs.spring.demo.controller;
 
 import com.bs.spring.demo.model.dto.Address;
 import com.bs.spring.demo.model.dto.Demo;
+import com.bs.spring.demo.view.MyView;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -198,6 +201,7 @@ public class DemoController {
 
     //리턴값으로 객체설정하기 -> 데이터만 전송.
     //@ResponsBody
+    //ajax 요청처리, RestAPI로 서비스를 구성할 떄 사용
     @RequestMapping("/demo/demo8.do")
     @ResponseBody //VR이 아니라 데이터에 집어 넣는다 ?
 //    public String returnObj(){
@@ -207,4 +211,30 @@ public class DemoController {
     public Demo returnObj(){
         return Demo.builder().devName("test").build();
     }
+
+    @RequestMapping("/demo/demo9.do")
+    @ResponseBody
+    //json 방식의 데이터를 Demo방식으로 파싱해줌.
+    public Demo testOjb(@RequestBody Demo demo) {
+        System.out.println(demo);
+        return demo;
+    }
+
+    //View 구현체로 응답하기
+
+    @Autowired
+    private  MyView myView;
+
+    @RequestMapping("/demo/demo10.do")
+    public View myViewTest(MyView view, Model model) {
+        model.addAttribute("test","나의 view");
+//      return myView; 이것도 가능. 위에서 받아서.
+        return view;
+    }
+
+
+
+
+
+
 }

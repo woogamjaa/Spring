@@ -145,9 +145,32 @@
                 </div>
             </div>
 
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <button type="button" class="btn btn-outline-primary col-sm-12"
+                            onclick="ajaxRequest();">
+                        ajax 요청 응답하기.
+                    </button>
+                </div>
+            </div>
+
         </form>
     </div>
     <script>
+        const ajaxRequest=()=>{
+            const demo={devName: "우감자" , devAge:33 , devGender:"남", devEmail:"woo@woo",
+            devLang:["java","javascript"]};
+            fetch("${pageContext.request.contextPath}/demo/demo9.do", {
+                method : "POST",
+                headers : {
+                    "Content-Type":"application/json"
+                },
+                body : JSON.stringify(demo)
+            }).then(response=>response.json()).then(data=>console.log(data));
+        }
+
+
+
         const requestTest=(url)=>{
             const form=document.getElementById("devFrm");
             form.action="${pageContext.request.contextPath}/demo/"+url;
