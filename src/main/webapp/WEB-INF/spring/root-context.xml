@@ -3,4 +3,32 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+
+    <!--
+    DB접속을 위한 클래스를 bean으로 등록하기
+    1. DataSourcve클래스(url정보 저장하는) 구현체 -> BasicDataSource클래스 등록
+    2. SqlSession을 생성해주는 클래스 -> SqlSessionFacotryBean클래스 등록
+    3. SqlSession클래스 -> SqlSessionTemplate클래스 등록
+    -->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+
+            <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+            <property name="username" value="spring"/>
+            <property name="password" value="spring"/>
+    </bean>
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <!--mybatis설정파일, mapper파일등록-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mappers/**/*.xml"/>
+    </bean>
+
+        <bean id="sqlSession"
+                class="org.mybatis.spring.SqlSessionTemplate">
+            <constructor-arg index="0" ref="sqlSessionFactory"/>
+        </bean>
+
 </beans>

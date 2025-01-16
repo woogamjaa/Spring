@@ -231,10 +231,4 @@ public class DemoController {
 //      return myView; 이것도 가능. 위에서 받아서.
         return view;
     }
-
-
-
-
-
-
 }

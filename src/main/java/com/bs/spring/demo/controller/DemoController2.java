@@ -1,10 +1,8 @@
 package com.bs.spring.demo.controller;
 
+import com.bs.spring.demo.model.dto.Demo;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/demo")   //
@@ -44,4 +42,15 @@ public class DemoController2 {
     //@PutMapping
     //@PatchMapping
     //@DeleteMapping
+
+    @RequestMapping("/insertdemo.do")
+    public String insertdemo(@ModelAttribute Demo demo) {
+        //DB mybatis
+        //1. mybatis.jar
+        //2. mybatis설정파일 mybatis-config, mapper.xml
+        //3. SqlSession -> DataSource
+        return "";
+    }
+
+
 }

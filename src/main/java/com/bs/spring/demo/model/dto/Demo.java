@@ -18,5 +18,6 @@ public class Demo {
     private String[] devLang;
     private Address address;
     private Date birthday;
+    private String email;
 }
 
