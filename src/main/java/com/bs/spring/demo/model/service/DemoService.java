@@ -4,7 +4,7 @@ import com.bs.spring.demo.model.dto.Demo;
 
 import java.util.List;
 
-public interface DeomService {
+public interface DemoService {
     List<Demo> selectDemoList();
     int insertDemo(Demo demo);
     int updateDemo(Demo demo);

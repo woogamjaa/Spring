@@ -9,12 +9,12 @@ import java.util.List;
 public class DemoDaoImpl implements DemoDao {
     @Override
     public List<Demo> selectDemoList(SqlSession Session) {
-        return null;
+        return Session.selectList("selectDemoList");
     }
 
     @Override
     public int insertDemo(SqlSession Session, Demo demo) {
-        return 0;
+        return Session.insert("demo.insertdemo", demo);
     }
 
     @Override

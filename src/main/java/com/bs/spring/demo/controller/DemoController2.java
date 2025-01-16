@@ -1,12 +1,27 @@
 package com.bs.spring.demo.controller;
 
+import com.bs.spring.demo.model.service.DemoService;
 import com.bs.spring.demo.model.dto.Demo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/demo")   //
 public class DemoController2 {
+
+    private DemoService demoService;
+
+    @Autowired
+    public DemoController2(DemoService demoService) {
+        this.demoService = demoService;
+    }
+
+
+
     //요청을 매핑하는 어노테이션
     //@RequestMapping(value="url", params="", headers="" ,consumes="",produces="")
     @RequestMapping(value = "/request/test",
@@ -44,13 +59,30 @@ public class DemoController2 {
     //@DeleteMapping
 
     @RequestMapping("/insertdemo.do")
-    public String insertdemo(@ModelAttribute Demo demo) {
+    public String insertdemo(@ModelAttribute Demo demo, Model model) {
         //DB mybatis
         //1. mybatis.jar
         //2. mybatis설정파일 mybatis-config, mapper.xml
         //3. SqlSession -> DataSource
-        return "";
+
+        int result = demoService.insertDemo(demo);
+        System.out.println(result);
+        if(result > 0) {
+
+            model.addAttribute("msg", "저장성공");
+            model.addAttribute("loc", "/");
+        }
+        else{
+            model.addAttribute("msg", "저장실패");
+            model.addAttribute("loc", "/demo/msg.jsp");
+        }
+        return "common/msg";
     }
 
-
+    @GetMapping("/demolist.do")
+    public String demolist(Model model) {
+        List<Demo> demos=demoService.selectDemoList();
+        model.addAttribute("demos", demos);
+        return "demo/demoList";
+    }
 }
