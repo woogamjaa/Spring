@@ -21,12 +21,9 @@ public class MyWebAppConfig implements WebMvcConfigurer {
     //컨트롤러에 매소드라 url 하지 않아도 일괄적으로 막 등록해서 사용할 수 있다.
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-     registry.addViewController("/member/enrollmember.do")
-             //뷰 리졸브 타서 간다.
-             .setViewName("member/enrollmember");
-
+     registry.addViewController("/member/enrollmember.do").setViewName("member/enrollmember");
+     registry.addViewController("/memo/memolist.do").setViewName("memo/memoList");
     }
-
 
 
     @Bean

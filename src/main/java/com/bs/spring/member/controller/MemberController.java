@@ -89,7 +89,7 @@ public class MemberController {
     @PostMapping("/enrollmemberend.do")
     public String enrollMemberEnd(Member inputMember, Model model) {
         //BCryptPasswordEncoder를 이용해서 비밀번호 암호화하기
-        String encPw=encoder.encode(inputMember.getPassword());
+        String encPw=passwordEncoder.encode(inputMember.getPassword());
         System.out.println(encPw);
         inputMember.setPassword(encPw);
         int result=service.saveMember(inputMember);
