@@ -47,14 +47,32 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="${path}/demo/demolist.do">demoList</a>
                     </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="${path}/memo/memolist.do">memoList</a>
+                    </li>
                 </ul>
+                <c:if test="${loginMember==null}">
                 <button class="btn btn-outline-success my-2 my-sm-0"
                         data-toggle="modal" data-target="#loginModal">로그인</button>
                 &nbsp;
                 <button id="enroll" class="btn btn-outline-primary my-2 my-sm-0"
-                        onclick="enrollMember('enroll.do');">
+                        onclick="location.assign('${path}/member/enrollmember.do');">
                     회원가입
                 </button>
+                </c:if>
+                <c:if test="${loginMember!=null}">
+                    <span>
+                        <a href="">
+                            <c:out value="${loginMember.userName}"/>
+                            님, 환영합니다.
+                        </a>
+                    </span>
+                    <button class="btn btn-outline-danger" onclick="location.replace('${path}/member/logout.do')">
+                        로그아웃
+                    </button>
+                </c:if>
+
             </div>
         </nav>
         <div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
@@ -68,7 +86,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="" method="post">
+                    <form action="${path}/member/login.do" method="post">
                         <div class="modal-body">
                             <input type="text" name="userId" class="form-control"
                                    placeholder="아이디입력" required><br/>
@@ -86,11 +104,3 @@
             </div>
         </div>
     </header>
-
-    <script>
-    const enrollMember=(url)=>{
-    const form=document.getElementById("enroll");
-    form.action="${pageContext.request.contextPath}/member/enroll.do";
-    form.submit();
-    }
-    </script>

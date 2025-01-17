@@ -9,6 +9,7 @@
   <url>http://maven.apache.org</url>
   <properties>
     <org.springframework-version>5.3.31</org.springframework-version>
+    <org.springsecurity-version>5.8.4</org.springsecurity-version>
   </properties>
   <dependencies>
     <dependency>
@@ -94,6 +95,24 @@
       <groupId>commons-dbcp</groupId>
       <artifactId>commons-dbcp</artifactId>
       <version>1.4</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-core</artifactId>
+      <version>${org.springsecurity-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>${org.springsecurity-version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>${org.springsecurity-version}</version>
     </dependency>
 
   </dependencies>
