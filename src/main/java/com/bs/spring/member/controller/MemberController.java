@@ -40,23 +40,23 @@ public class MemberController {
 
 
     @RequestMapping("/login.do")
-    public String login(String userId,String pw, Model model, HttpSession session) {
-        Member member=service.selectMemberById(userId);
+    public String login(String userId, String pw, Model model, HttpSession session) {
+        Member member = service.selectMemberById(userId);
         //passwordEncoder.encode(pw);
         //원본값과 암호화값을 비교하는 메소드를 제공
         //passwordEncoder.matches(pw, member.getPassword()); // 원본값. 암호화값.
 
         //if(member==null || !member.getPassword().equals(pw)) {
-        if(member==null || passwordEncoder.matches(pw, member.getPassword())) {
+        if (member == null || !passwordEncoder.matches(pw, member.getPassword())) {
             //로그인 실패
             model.addAttribute("msg", "아이디와 패스워드가 일치하지 않습니다.");
             model.addAttribute("loc", "/");
             //msg 페이지로.
             return "common/msg";
-        }else {
+        } else {
             //로그인 성공
             //session.setAttribute("loginMember", member);
-            model.addAttribute("loginMember",member);  //생명주기 관련해서 안댐. 위에  @SessionAttributes({"loginMember"}) 이걸 넣으면 가능.
+            model.addAttribute("loginMember", member);  //생명주기 관련해서 안댐. 위에  @SessionAttributes({"loginMember"}) 이걸 넣으면 가능.
             //메인으로
             return "redirect:/";
         }
@@ -65,13 +65,11 @@ public class MemberController {
     //로그아웃.
     @RequestMapping("/logout.do")
     public String logout(SessionStatus status) {
-        if(!status.isComplete()){
+        if (!status.isComplete()) {
             status.setComplete(); // session 삭제하는 메소드
         }
         return "redirect:/";
     }
-
-
 
 
 //    @GetMapping("/enrollmember.do")
@@ -89,23 +87,23 @@ public class MemberController {
     @PostMapping("/enrollmemberend.do")
     public String enrollMemberEnd(Member inputMember, Model model) {
         //BCryptPasswordEncoder를 이용해서 비밀번호 암호화하기
-        String encPw=passwordEncoder.encode(inputMember.getPassword());
+        String encPw = passwordEncoder.encode(inputMember.getPassword());
         System.out.println(encPw);
         inputMember.setPassword(encPw);
-        int result=service.saveMember(inputMember);
+        int result = service.saveMember(inputMember);
 
-        String msg,loc,viewName="common/msg";
-        if(result>0) {
-           // msg="회원가입성공";
-           // loc="/";
+        String msg, loc, viewName = "common/msg";
+        if (result > 0) {
+            // msg="회원가입성공";
+            // loc="/";
 
             //return "redirect:/";
-            viewName="redirect:/";
-        }else{
-            msg="회원가입실패";
-            loc="/member/enrollmember.do";
-            model.addAttribute("msg",msg);
-            model.addAttribute("loc",loc);
+            viewName = "redirect:/";
+        } else {
+            msg = "회원가입실패";
+            loc = "/member/enrollmember.do";
+            model.addAttribute("msg", msg);
+            model.addAttribute("loc", loc);
 
         }
         return viewName;

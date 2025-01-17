@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
-
 <style>
     div#memo-container{width:60%; margin:0 auto;}
 </style>
@@ -17,7 +16,6 @@
 <br />
 <!-- 메모목록 -->
 <table class="table">
-
     <tr>
         <th scope="col">번호</th>
         <th scope="col">메모</th>
@@ -32,7 +30,6 @@
           <td><button class="btn btn-outline-danger">삭제</button></td>
       </tr>
     </c:forEach>
-    내용출력
 </table>
 
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

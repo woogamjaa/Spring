@@ -107,5 +107,27 @@
         <property name="prefix" value="/WEB-INF/views/"/>
 
         <!--파일 [/WEB-INF/views/test/beantest.jsp]을(를) 찾을 수 없습니다. 로 jsp를 찾는 기본설정을 함.-->
+
+
     </bean>
+
+
+    <!--<bean id="basicinter" class="com.bs.spring.common.interceptor.BasicInterceptror"/>-->
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+                <mvc:mapping path = "/member/**"/>
+                <ref bean="basicinter"/>
+        </mvc:interceptor>
+
+        <mvc:interceptor>
+            <mvc:mapping path = "/**"/>
+            <mvc:exclude-mapping path="/"/>
+            <mvc:exclude-mapping path="/member/**"/>
+            <ref bean="loginCheck"/>
+        </mvc:interceptor>
+
+
+    </mvc:interceptors>
+
 </beans>

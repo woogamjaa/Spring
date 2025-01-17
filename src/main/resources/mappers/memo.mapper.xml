@@ -8,8 +8,6 @@
         )
     </insert>
 
-
-
     <select id="selectMemoList" resultType="memo">
         SELECT * FROM MEMO
     </select>
