@@ -120,13 +120,13 @@
                 <ref bean="basicinter"/>
         </mvc:interceptor>
 
-        <mvc:interceptor>
-            <mvc:mapping path = "/**"/> <!--이런 경우는 좀 없다.-->
+        <!--<mvc:interceptor>
+            <mvc:mapping path = "/**"/> &lt;!&ndash;이런 경우는 좀 없다.&ndash;&gt;
             <mvc:exclude-mapping path="/"/>
             <mvc:exclude-mapping path="/member/**"/>
             <mvc:exclude-mapping path="/resources/**"/>
             <ref bean="loginCheck"/>
-        </mvc:interceptor>
+        </mvc:interceptor>-->
 
 
     </mvc:interceptors>
