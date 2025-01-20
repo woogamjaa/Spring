@@ -3,6 +3,7 @@ package com.bs.spring.member.controller;
 
 import com.bs.spring.member.model.dto.Member;
 import com.bs.spring.member.model.service.MemberService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,10 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/member")
 @SessionAttributes({"loginMember"}) // SessionScope 를 가진다.
+@Slf4j
 public class MemberController {
 
-    private final Logger logger= LoggerFactory.getLogger(MemberController.class);
+    //private final Logger logger= LoggerFactory.getLogger(MemberController.class);
 
 
     private final BCryptPasswordEncoder passwordEncoder;
@@ -87,9 +89,9 @@ public class MemberController {
 
     @RequestMapping("/enrollmember.do")
     public void enrollMember(@ModelAttribute("member") Member m) {
-        logger.debug("회원가입 화면 이동");
+        log.debug("회원가입 화면 이동");
         int age=190;
-        logger.debug("회원: {} 나이 : {}",m,age);
+        log.debug("회원: {} 나이 : {}",m,age);
     }
 
 //    @GetMapping("/enrollmember.do")
