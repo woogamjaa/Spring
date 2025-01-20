@@ -5,15 +5,25 @@
         <!--console에 출려겨하는 appender-->
         <Console name="console">
             <PatternLayout pattern="%-5p %d{yyyy-MM-dd HH:mm:ss} [%l] - %m %n"/>
-            <JsonTemplateLayout eventTemplateUri="classpath:myLayout.json"/>
+           <!-- <JsonTemplateLayout eventTemplateUri="classpath:myLayout.json"/>-->
         </Console>
 
+        <RollingFile name="rollingFile"
+                     fileName="c:/Users/user/logs/spring-log.log"
+                     filePatten="c:/User/user/logs/log-%d{yyyy-MM-dd}.log">
+        </RollingFile>
+            <Policied>
+                <!--하루에 한개 저장하겠다.-->
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policied>
 
     </Appenders>
 
     <Loggers>
         <!--출력대상과 출력 level을 설정-->
-        <Logger name="com.bs.spring" level="WARN"/>
+        <Logger name="com.bs.spring" level="debug">
+            <AppenderRef ref="rollingFile"/>
+        </Logger>
         <Logger name="org.springframework.context" level="INFO"/>
         <Logger name="org.springframework.core" level="INFO"/>
         <Logger name="org.springframework.web" level="INFO"/>
