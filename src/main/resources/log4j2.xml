@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Configuration>
+    <!--출력방식에 대한 설정-->
+    <Appenders>
+        <!--console에 출려겨하는 appender-->
+        <Console name="console">
+            <PatternLayout pattern="%d[%t] %5p - %m %n"/>
+        </Console>
+    </Appenders>
+
+    <Loggers>
+        <!--출력대상과 출력 level을 설정-->
+        <Logger name="com.bs.spring" level="debug"/>
+        <Logger name="org.springframework.context" level="INFO"/>
+        <Logger name="org.springframework.core" level="INFO"/>
+        <Logger name="org.springframework.web" level="INFO"/>
+        <Logger name="org.springframework.beans" level="INFO"/>
+
+        <!--최상위 로거로 자식로그가 내용을 상속받음-->
+        <Root level="INFO">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
