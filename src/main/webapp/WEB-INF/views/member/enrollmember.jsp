@@ -1,19 +1,20 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <style>
     div#enroll-container{width:400px; margin:0 auto; text-align:center;}
     div#enroll-container input, div#enroll-container select {margin-bottom:10px;}
 </style>
 <div id="enroll-container">
-    <%
-        String name=null;
-        name.length();
-    %>
 
 
-    <form name="memberEnrollFrm"  method="POST" action="${pageContext.request.contextPath}/member/enrollmemberend.do">
-        <input type="text" class="form-control" placeholder="아이디 (4글자이상)" name="userId" id="userId_" required>
-        <input type="password" class="form-control" placeholder="비밀번호" name="password" id="password_" required>
+    <form:form id="memberform" modelAttribute="member" name="memberEnrollFrm"  method="POST" action="${pageContext.request.contextPath}/member/enrollmemberend.do">
+        <form:input path="userId" type="text" class="form-control" placeholder="아이디 (4글자이상)" name="userId" id="userId_" />
+        <form:errors path="userId"/>
+
+        <form:input path="password" type="password" class="form-control" placeholder="비밀번호" name="password" id="password_" />
+        <form:errors path="password"/>
+
         <input type="password" class="form-control" placeholder="비밀번호확인" id="password2" required>
         <input type="text" class="form-control" placeholder="이름" name="userName" id="userName" required>
         <input type="number" class="form-control" placeholder="나이" name="age" id="age">
@@ -36,6 +37,6 @@
         <br />
         <input type="submit" class="btn btn-outline-success" value="가입" >&nbsp;
         <input type="reset" class="btn btn-outline-success" value="취소">
-    </form>
+    </form:form>
 </div>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
