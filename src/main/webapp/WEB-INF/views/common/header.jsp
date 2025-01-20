@@ -27,7 +27,7 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">
-                <img alt="로고" src="${path}/r    esources/images/logo-spring.png"
+                <img alt="로고" src="${path}/resources/images/logo-spring.png"
                      width="50px">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
