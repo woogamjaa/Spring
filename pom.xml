@@ -137,6 +137,20 @@
       <version>2.24.3</version>
     </dependency>
 
+
+    <!-- slf4j 사용하기-->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.36</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j-impl</artifactId>
+      <version>2.24.3</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>springcore</finalName>
