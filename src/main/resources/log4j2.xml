@@ -9,13 +9,14 @@
         </Console>
 
         <RollingFile name="rollingFile"
-                     fileName="c:/Users/user/logs/spring-log.log"
-                     filePatten="c:/User/user/logs/log-%d{yyyy-MM-dd}.log">
+                     fileName="C:/Users/woo21/logs/spring-log.log"
+                     filePattern="C:/Users/woo21/logs/log-%d{yyyy-MM-dd}.log">
+            <PatternLayout pattern="%-5p %d{yyyy-MM-dd HH:mm:ss} [%l] - %m %n"/>
+                <Policies>
+                    <!--하루에 한개 저장하겠다.-->
+                    <TimeBasedTriggeringPolicy interval="1"/>
+                </Policies>
         </RollingFile>
-            <Policied>
-                <!--하루에 한개 저장하겠다.-->
-                <TimeBasedTriggeringPolicy interval="1"/>
-            </Policied>
 
     </Appenders>
 
