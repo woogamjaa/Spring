@@ -65,6 +65,9 @@ public class DemoController2 {
 
         if (bindingResult.hasErrors()) {
             System.out.println("에러발생 ! ");
+            System.out.println(bindingResult);
+            bindingResult.getAllErrors()
+                    .forEach(System.out::println);
             return "demo/demo";
         }
         //DB mybatis

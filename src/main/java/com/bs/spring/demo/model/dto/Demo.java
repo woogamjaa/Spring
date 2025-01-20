@@ -17,7 +17,7 @@ import java.sql.Date;
 
 public class Demo {
     @NotEmpty(message = "이름은 반드시 작성하세요 ! ")
-    @Pattern(regexp = "[가힣]{2,}")
+    @Pattern(regexp = "[가-힣]{2,}", message = "두 글자이상 한글만 가능합니다.")
     private String devName;
     @Min(value=14 , message = "애들은 가라")
     private int devAge;
