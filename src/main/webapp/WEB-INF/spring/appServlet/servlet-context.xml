@@ -121,7 +121,7 @@
         </mvc:interceptor>
 
         <mvc:interceptor>
-            <mvc:mapping path = "/**"/>
+            <mvc:mapping path = "/**"/> <!--이런 경우는 좀 없다.-->
             <mvc:exclude-mapping path="/"/>
             <mvc:exclude-mapping path="/member/**"/>
             <mvc:exclude-mapping path="/resources/**"/>
