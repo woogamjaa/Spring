@@ -1,8 +1,18 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; UTF-8" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
+
+<style>
+    .errorMsg{
+        color:red;
+        font-size: 20px;
+    }
+
+</style>
+
 <section id="content">
     <div id="demo-container">
-        <form id="devFrm" method="post">
+        <%--<form id="devFrm" method="post">
             <div class="form-group row">
                 <label for="devName" class="col-sm-2 col-form-label">이름</label>
                 <div class="col-sm-10">
@@ -76,7 +86,90 @@
                 <div class="col-sm-10">
                     <input type="date" class="form-control" id="birthday" name="birthday">
                 </div>
-            </div>
+            </div>--%>
+        <%--Spring from 적용하기.--%>
+            <form:form id="devFrm" method="post" modelAttribute="demo">
+                <div class="form-group row">
+                    <label for="devName" class="col-sm-2 col-form-label">이름</label>
+                    <div class="col-sm-10">
+                        <%--dto 객체에 특정 필드랑 연결하는 속성으로 path = 필드명  / 닫기 태그 반드시 해야함.--%>
+                        <form:input path="devName" type="text" class="form-control" id="devName" name="devName"/>
+                        <form:errors path="devName" cssClass="errorMsg"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="devAge" class="col-sm-2 col-form-label">나이</label>
+                    <div class="col-sm-10">
+                        <form:input path="devAge" type="number" class="form-control" id="devAge" name="devAge"/>
+                        <form:errors path="devAge" cssClass="errorMsg"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="devEmail" class="col-sm-2 col-form-label">이메일</label>
+                    <div class="col-sm-10">
+                        <form:input path="devEmail" type="email" class="form-control" id="devEmail" name="devEmail"/>
+                                <form:errors path="devEmail" cssClass="errorMsg"/>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">성별</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <form:radiobutton path="devGender" class="form-check-input" name="devGender" id="devGender0" value="M"/>
+                            <label class="form-check-label" for="devGender0">남</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <form:radiobutton path="devGender" class="form-check-input" name="devGender" id="devGender1" value="F"/>
+                            <label class="form-check-label" for="devGender1">여</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">개발언어</label>
+                    <div class="col-sm-10">
+                        <div class="form-check form-check-inline">
+                            <form:checkbox  path="devLang" class="form-check-input" name="devLang" id="devLang0" value="Java"/>
+                            <label class="form-check-label" for="devLang0">Java</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <form:checkbox  path="devLang" class="form-check-input"  name="devLang" id="devLang1" value="C"/>
+                            <label class="form-check-label" for="devLang1">C</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <form:checkbox  path="devLang" class="form-check-input" name="devLang" id="devLang2" value="Javascript"/>
+                            <label class="form-check-label" for="devLang2">Javascript</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="devEmail" class="col-sm-2 col-form-label">시도</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="sido" name="sido">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="devEmail" class="col-sm-2 col-form-label">군구</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="gungu" name="gungu">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="devEmail" class="col-sm-2 col-form-label">동</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dong" name="dong">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="devEmail" class="col-sm-2 col-form-label">생년월일</label>
+                    <div class="col-sm-10">
+                        <form:input path="birthday" type="date" class="form-control" id="birthday" name="birthday"/>
+                        <form:errors path="birthday" cssClass="errorMsg"/>
+                    </div>
+                </div>
+
+
 
             <div class="form-group row">
                 <div class="col-sm-12">
@@ -163,7 +256,7 @@
                 </div>
             </div>
 
-        </form>
+        </form:form>
     </div>
     <script>
         const insertDemo=()=>{

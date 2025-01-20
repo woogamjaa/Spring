@@ -5,6 +5,8 @@ import com.bs.spring.demo.model.dto.Demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -59,11 +61,18 @@ public class DemoController2 {
     //@DeleteMapping
 
     @RequestMapping("/insertdemo.do")
-    public String insertdemo(@ModelAttribute Demo demo, Model model) {
+    public String insertdemo(@Validated Demo demo, BindingResult bindingResult, Model model) {
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("에러발생 ! ");
+            return "demo/demo";
+        }
         //DB mybatis
         //1. mybatis.jar
         //2. mybatis설정파일 mybatis-config, mapper.xml
         //3. SqlSession -> DataSource
+
+
 
         int result = demoService.insertDemo(demo);
         System.out.println(result);

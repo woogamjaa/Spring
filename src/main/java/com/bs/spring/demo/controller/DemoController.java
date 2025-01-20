@@ -23,7 +23,7 @@ import java.util.Map;
 @Controller
 public class DemoController {
     @RequestMapping("/demo/demo.do")
-    public String index() {
+    public String demo(@ModelAttribute("demo") Demo demo) {
         System.out.println("index메소드 실행");
         return "demo/demo";
     }
