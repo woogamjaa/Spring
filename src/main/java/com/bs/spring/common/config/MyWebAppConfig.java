@@ -33,7 +33,7 @@ public class MyWebAppConfig implements WebMvcConfigurer {
 
 //     registry.addViewController("/board/boarddetail.do").setViewName("board/boardDetail");
 //     registry.addViewController("/board/boardlist.do").setViewName("board/boardList");
-//     registry.addViewController("/board/boardwrite.do").setViewName("board/boardWrite");
+     registry.addViewController("/boards/boardwrite.do").setViewName("board/boardWrite");
 
     }
 

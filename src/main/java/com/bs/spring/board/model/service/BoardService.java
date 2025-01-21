@@ -9,7 +9,7 @@ import java.util.Map;
 public interface BoardService {
 
     List<Board> selectBoardList(Map<String, Integer> map);
-    int insertBoardList();
+    int insertBoardList(Board board);
     int countBoardList();
 
 }

@@ -32,7 +32,7 @@ public class BoardServiceImpl implements BoardService {
     }
 
     @Override
-    public int insertBoardList() {
-        return 0;
+    public int insertBoardList(Board board) {
+        return dao.insertBoardList(session,board);
     }
 }

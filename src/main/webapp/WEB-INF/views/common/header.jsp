@@ -55,6 +55,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="${path}/board/boardlist.do">boardList</a>
                     </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="${path}/board/boardwrite.do">boardwrite</a>
+                    </li>
+                    
                 </ul>
                 <c:if test="${loginMember==null}">
                 <button class="btn btn-outline-success my-2 my-sm-0"

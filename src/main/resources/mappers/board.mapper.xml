@@ -10,5 +10,7 @@
         SELECT COUNT(*) FROM BOARD
     </select>
 
-
+   <insert id="insertBoardList" parameterType="board">
+        INSERT INTO BOARD
+    </insert>
 </mapper>

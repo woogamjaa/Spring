@@ -10,6 +10,6 @@ import java.util.Map;
 public interface BoardDao {
 
     List<Board> selectBoardList(SqlSession session, Map<String, Integer> params);
-    int insertBoard(SqlSession session, Board board);
+    int insertBoardList(SqlSession session, Board board);
     int countBoardList(SqlSession session);
 }
