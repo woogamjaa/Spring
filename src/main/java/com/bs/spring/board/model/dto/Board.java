@@ -13,9 +13,10 @@ import java.sql.Date;
 @NoArgsConstructor
 @Builder
 public class Board {
+    private Long boardNo;
     private String boardTitle;
     private String boardWriter;
     private String boardContent;
     private Date boardDate;
-    private int boardReadCount;
+    private Integer boardReadCount;
 }
