@@ -5,6 +5,7 @@ import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
 import com.bs.spring.memo.model.dto.Memo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -20,6 +22,7 @@ import java.util.Map;
 @RequiredArgsConstructor //final 일때 쓴다
 @Controller
 @RequestMapping("/board")
+@Slf4j // log 보고싶을때.
 
 public class BoardController {
 
@@ -53,18 +56,12 @@ public class BoardController {
     }
 
 
-    @PostMapping("/boardwriteend.do")
-    public String boardList (Board board , Model model) {
-        int result = service.insertBoardList(board);
-        String msg,loc,viewName="common/msg";
-        if(result>0) {
-            viewName="redirect:/";
-        } else {
-            msg="게시글 등록실패";
-            loc="/board/boardEndList.do";
-            model.addAttribute("msg",msg);
-            model.addAttribute("loc",loc);
-        }
-        return viewName;
+    @PostMapping(value = "/boardwriteend.do")
+    public String insertboardList (Board board , Model model, MultipartFile upFile) { //따로 저장하는 짓을 해야함.
+
+        log.debug("파일명" + upFile.getOriginalFilename());
+        log.debug("파일크기" + upFile.getSize());
+        log.debug("{}",board);
+        return "redirect:/board/boardlist.do";
     }
 }
