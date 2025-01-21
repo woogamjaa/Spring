@@ -30,6 +30,11 @@ public class MyWebAppConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
      registry.addViewController("/member/enrollmember.do").setViewName("member/enrollmember");
      registry.addViewController("/memo/memolist.do").setViewName("memo/memoList");
+
+//     registry.addViewController("/board/boarddetail.do").setViewName("board/boardDetail");
+//     registry.addViewController("/board/boardlist.do").setViewName("board/boardList");
+//     registry.addViewController("/board/boardwrite.do").setViewName("board/boardWrite");
+
     }
 
 
@@ -47,25 +52,25 @@ public class MyWebAppConfig implements WebMvcConfigurer {
     }
 
     //ExceptionHandler를 등록하기
-    @Bean
-    public HandlerExceptionResolver exceptionHandler() {
-
-        SimpleMappingExceptionResolver exceptionHandler = new SimpleMappingExceptionResolver();
-        Properties prop = new Properties();
-        //key:Exception명, value : 연결할 주소.
-        prop.put(RuntimeException.class.getName(), "common/error/runtimeerror");
-
-        //MyException LocaleData
-        prop.put(MyException.class.getName(), "common/error/myerror");
-
-        exceptionHandler.setExceptionMappings(prop);
-
-        //기본 에러처리페이지를 등록.
-        exceptionHandler.setDefaultErrorView("common/errorr/default");
-
-
-        return exceptionHandler;
-    }
+//    @Bean
+//    public HandlerExceptionResolver exceptionHandler() {
+//
+//        SimpleMappingExceptionResolver exceptionHandler = new SimpleMappingExceptionResolver();
+//        Properties prop = new Properties();
+//        //key:Exception명, value : 연결할 주소.
+//        prop.put(RuntimeException.class.getName(), "common/error/runtimeerror");
+//
+//        //MyException LocaleData
+//        prop.put(MyException.class.getName(), "common/error/myerror");
+//
+//        exceptionHandler.setExceptionMappings(prop);
+//
+//        //기본 에러처리페이지를 등록.
+//        exceptionHandler.setDefaultErrorView("common/errorr/default");
+//
+//
+//        return exceptionHandler;
+//    }
 
 
 
