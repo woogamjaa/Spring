@@ -127,8 +127,7 @@
             <mvc:exclude-mapping path="/resources/**"/>
             <ref bean="loginCheck"/>
         </mvc:interceptor>-->
-
-
+    
     </mvc:interceptors>
 
 </beans>

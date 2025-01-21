@@ -35,9 +35,7 @@ public class BasicController {
         c.setMaxAge(60*60*24); // 하루동안
         response.addCookie(c);
 
-
-
-
+        
 //
 //
 //        System.out.println("index메소드 실행");
@@ -59,10 +57,18 @@ public class BasicController {
         String usmsg=webcontext.getMessage("info", null, Locale.US);
         String komsg=webcontext.getMessage("info", null, Locale.KOREA);
         String jamsg=webcontext.getMessage("info", null, Locale.JAPAN);
+
+        String myusMsg=webcontext.getMessage("myinfo", new Object[]{"bsyoo",19},Locale.US);
+        String mykrMsg=webcontext.getMessage("myinfo", new Object[]{"bsyoo",19},Locale.KOREA);
+        String myjaMsg=webcontext.getMessage("myinfo", new Object[]{"bsyoo",19},Locale.JAPAN);
+
         Map<String,String> map=new HashMap<String,String>();
         map.put("usmsg",usmsg);
         map.put("komsg",komsg);
         map.put("jamsg",jamsg);
+        map.put("myusMsg",myusMsg);
+        map.put("mykrMsg",mykrMsg);
+        map.put("myjaMsg",myjaMsg);
         return map;
     }
 }
