@@ -31,7 +31,7 @@ public class PageFactory {
                 sb.append("</li>");
             } else {
                 sb.append("<li class='page-item'>");
-                sb.append("<a class='page-link' href='javascript:fn_paging(" + (pageNo - 1) + ")'>" + pageNo + "</a>");
+                sb.append("<a class='page-link' href='javascript:fn_paging(" + (pageNo) + ")'>" + pageNo + "</a>");
                 sb.append("</li>");
             }
             pageNo++;

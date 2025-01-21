@@ -25,7 +25,7 @@
         </c:forEach>
     </table>
     <div id="pageBar">
-       <c:out value="${pageBar}" escapeXml="true"/>
+       <c:out value="${pageBar}" escapeXml="false"/>
     </div>
 
 </section>
