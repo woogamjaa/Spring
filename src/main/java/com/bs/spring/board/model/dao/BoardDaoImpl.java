@@ -1,5 +1,6 @@
 package com.bs.spring.board.model.dao;
 
+import com.bs.spring.board.model.dto.Attachment;
 import com.bs.spring.board.model.dto.Board;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
@@ -27,5 +28,10 @@ public class BoardDaoImpl implements BoardDao {
     @Override
     public int insertBoardList(SqlSession session, Board board) {
         return session.insert("board.insertBoardList", board);
+    }
+
+    @Override
+    public int insertAttachment(SqlSession session, Attachment attachment) {
+        return session.insert("board.insertAttachment", attachment);
     }
 }

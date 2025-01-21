@@ -10,9 +10,20 @@
         SELECT COUNT(*) FROM BOARD
     </select>
 
-<!--   <insert id="insertBoardList" parameterType="board">-->
-<!--        INSERT INTO BOARD VALUES (-->
-<!--                                  SEQ_BOARD.NEXTVAL,#{}-->
-<!--                                 )-->
-<!--    </insert>-->
+   <insert id="insertBoardList" parameterType="board">
+        INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL,#{boardTitle}
+                                  ,#{boardWriter},#{boardContent}
+                                ,default,default)
+
+        <selectKey keyProperty="boardNo" resultType="Long" order="AFTER">
+            SELECT SEQ_BOARDNO.CURRVAL FROM DUAL
+        </selectKey>
+    </insert>
+
+    <insert id="insertAttachment" parameterType="attachment">
+        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHEMENTNO.NEXTVAL,#{boardNo},
+                                       #{originalFileName}, #{renamedFileName}
+                                      ,default,default,default)
+
+    </insert>
 </mapper>

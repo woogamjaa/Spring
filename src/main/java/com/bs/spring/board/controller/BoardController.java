@@ -1,12 +1,15 @@
 package com.bs.spring.board.controller;
 
+import com.bs.spring.board.model.dto.Attachment;
 import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
 
+import com.bs.spring.common.error.MyException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,7 @@ import java.io.File;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -75,6 +79,9 @@ public class BoardController {
         String path=session.getServletContext().getRealPath("/resources/upload/board");
         File dir=new File(path);
         if(!dir.exists()){dir.mkdirs();} // 존재하지 않으면 폴더를 생성한다.
+
+        List<Attachment> files=new ArrayList<Attachment>();
+
         if (upFile!=null){
 
             for(MultipartFile file : upFile){
@@ -102,13 +109,37 @@ public class BoardController {
 
             try{
                 file.transferTo(new File(path, rename));
+                files.add(Attachment.builder()
+                                .originalFileName(oriname)
+                                .renamedFileName(rename)
+                                .build());
             }catch(IOException e) {
                 e.printStackTrace();
                 log.error(file.getOriginalFilename()+"파일 저장 실패");
+                if(files.size()>0){
+                    for(Attachment attachment:files){
+                        File delFile=new File(path,attachment.getOriginalFileName());
+                        if(delFile.exists()){
+                            delFile.delete();
+                        }
+                    }
+                }
+                //실패처리
+
             }
         }
             }
 
-        return "redirect:/board/boardlist.do";
+        //DB에 저장하기
+        String viewName;
+        try{
+            service.insertBoardList(board,files);
+            //게시글저장 성공
+            viewName="redirect:/board/boardlist.do";
+        }catch(MyException e) {
+            //게시글저장 실패
+            viewName="redirect:/board/boardwrite.do";
+        }
+        return viewName;
     }
 }
