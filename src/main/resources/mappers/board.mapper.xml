@@ -11,7 +11,7 @@
     </select>
 
    <insert id="insertBoardList" parameterType="board">
-        INSERT INTO BOARD VALUES (SEQ_BOARD.NEXTVAL,#{boardTitle}
+        INSERT INTO BOARD VALUES (SEQ_BOARDNO.NEXTVAL,#{boardTitle}
                                   ,#{boardWriter},#{boardContent}
                                 ,default,default)
 
@@ -21,7 +21,7 @@
     </insert>
 
     <insert id="insertAttachment" parameterType="attachment">
-        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHEMENTNO.NEXTVAL,#{boardNo},
+        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENTNO.NEXTVAL,#{boardNo},
                                        #{originalFileName}, #{renamedFileName}
                                       ,default,default,default)
 
