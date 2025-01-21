@@ -12,16 +12,17 @@
             <th>첨부파일</th>
             <th>조회수</th>
         </tr>
-<c:forEach var="board" items="${boards}" varStatus="vs">
-        <tr>
-            <td>${vs.count}</td>
-            <td>${board.boardTitle}</td>
-            <td>${board.boardWriter}</td>
-            <td><img src="${pageContext.request.contextPath}/resources/images/file.png"></td>
-            <td>${board.boardDate}</td>
-            <td>${board.boardReadCount}</td>
-        </tr>
-</c:forEach>
+        <c:forEach var="board" items="${boards}" varStatus="vs">
+                <tr>
+                    <td>${vs.count}</td>
+                    <td>${board.boardTitle}</td>
+                    <td>${board.boardWriter}</td>
+                    <td>${board.boardDate}</td>
+                    <td><img src="${pageContext.request.contextPath}/resources/images/file.png"></td>
+                    <td>${board.boardReadCount}</td>
+                </tr>
+        </c:forEach>
     </table>
+    ${pageBar}
 </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
