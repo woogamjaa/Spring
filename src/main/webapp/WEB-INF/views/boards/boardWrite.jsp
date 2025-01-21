@@ -1,7 +1,9 @@
 <%@ page language="java" pageEncoding="UTF-8" contentType="text/html; UTF-8" %>
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <div id="board-container">
-    <form name="boardFrm" method="POST" action="${pageContext.request.contextPath}/board/boardwriteend.do">
+    <form name="boardFrm" method="post" action="${pageContext.request.contextPath}/board/boardwriteend.do"
+    enctype="multipart/form-data"
+    >
         <input type="text" class="form-control" placeholder="제목" name="boardTitle" id="boardTitle" required>
         <input type="text" class="form-control" placeholder="아이디 (4글자이상)" name="boardWriter" value="${sessionScope.loginMember.userId}" readonly required>
         <div class="input-group mb-3" style="padding:0px;">
