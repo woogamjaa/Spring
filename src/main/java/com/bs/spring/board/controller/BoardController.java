@@ -3,6 +3,7 @@ package com.bs.spring.board.controller;
 import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.memo.model.dto.Memo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,20 +13,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+@RequiredArgsConstructor //final 일때 쓴다
 @Controller
 @RequestMapping("/board")
+
 public class BoardController {
 
     private final BoardService service;
 
 
-    @Autowired
-    public BoardController (BoardService service) {
-        this.service= service;
-    }
+//    @Autowired      <<< RequiredArgsConstructor 이거 때문에 안써도 됨
+//    public BoardController (BoardService service) {
+//        this.service= service;
+//    }
 
     @GetMapping("/boardlist.do")
-    public String boardlist(Model model) {
+    public String boardlist(Model model, int cPage, int pPage) {
         List<Board> boards=service.selectBoardList();
         int totalContents=service.countBoardList();
 
