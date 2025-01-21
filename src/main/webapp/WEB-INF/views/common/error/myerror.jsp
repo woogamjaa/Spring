@@ -1,6 +1,6 @@
 <%@ page import="com.bs.spring.common.error.MyException" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="com.bs.spring.common.error.MyException" page isErrorPage="true" %>
+<%@ page import="com.bs.spring.common.error.MyException" isErrorPage="true" %>
 <html>
 <head>
     <title>Title</title>
