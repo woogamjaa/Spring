@@ -71,4 +71,18 @@ public class BasicController {
         map.put("myjaMsg",myjaMsg);
         return map;
     }
+
+    //이셉션을 핸들링을 할 수 있는 예외처리 기능.
+    @RequestMapping("/errorhandler")
+    public String errorhandler(){
+
+        if(1==1) {
+            throw new RuntimeException("errorhandler");
+        }
+
+        return "redirect:/";
+    }
+
+
+
 }

@@ -8,9 +8,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
@@ -40,4 +44,18 @@ public class MyWebAppConfig implements WebMvcConfigurer {
         messageSource.setBasename("messages");
         return messageSource;
     }
+
+    //ExceptionHandler를 등록하기
+    @Bean
+    public HandlerExceptionResolver exceptionResolver() {
+
+        SimpleMappingExceptionResolver exceptionResolver = new SimpleMappingExceptionResolver();
+        Properties prop = new Properties();
+        //key:Exception명, value : 연결할 주소.
+        prop.put(RuntimeException.class.getName(), "common/error/runtimeerror");
+        exceptionResolver.setExceptionMappings(prop);
+        return exceptionResolver;
+    }
+
+
 }
