@@ -1,5 +1,6 @@
 package com.bs.spring.common.config;
 
+import com.bs.spring.common.error.MyException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.MessageSource;
@@ -47,15 +48,25 @@ public class MyWebAppConfig implements WebMvcConfigurer {
 
     //ExceptionHandler를 등록하기
     @Bean
-    public HandlerExceptionResolver exceptionResolver() {
+    public HandlerExceptionResolver exceptionHandler() {
 
-        SimpleMappingExceptionResolver exceptionResolver = new SimpleMappingExceptionResolver();
+        SimpleMappingExceptionResolver exceptionHandler = new SimpleMappingExceptionResolver();
         Properties prop = new Properties();
         //key:Exception명, value : 연결할 주소.
         prop.put(RuntimeException.class.getName(), "common/error/runtimeerror");
-        exceptionResolver.setExceptionMappings(prop);
-        return exceptionResolver;
+
+        //MyException LocaleData
+        prop.put(MyException.class.getName(), "common/error/myerror");
+
+        exceptionHandler.setExceptionMappings(prop);
+
+        //기본 에러처리페이지를 등록.
+        exceptionHandler.setDefaultErrorView("common/errorr/default");
+
+
+        return exceptionHandler;
     }
+
 
 
 }

@@ -1,6 +1,7 @@
 package com.bs.spring.controller;
 
 
+import com.bs.spring.common.error.MyException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,12 @@ public class BasicController {
         }
 
         return "redirect:/";
+    }
+
+
+    @RequestMapping("/myexception")
+    public String myexception(){
+        throw new MyException("나의 에러를 처리해봐.");
     }
 
 
