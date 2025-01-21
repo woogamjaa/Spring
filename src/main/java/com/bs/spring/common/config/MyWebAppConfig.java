@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -72,6 +73,12 @@ public class MyWebAppConfig implements WebMvcConfigurer {
 //        return exceptionHandler;
 //    }
 
+//    @Bean
+//    public CommonsMultipartResolver multipartResolver() {
+//        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(1024*1024*100);
+//        return multipartResolver;
+//    }
 
 
 }
