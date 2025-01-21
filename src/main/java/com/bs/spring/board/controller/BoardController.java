@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor //final 일때 쓴다
 @Controller
@@ -28,8 +29,8 @@ public class BoardController {
 //    }
 
     @GetMapping("/boardlist.do")
-    public String boardlist(Model model, int cPage, int pPage) {
-        List<Board> boards=service.selectBoardList();
+    public String boardlist(Model model, int cPage, int numPerPage) {
+        List<Board> boards=service.selectBoardList(Map.of("cPage", cPage,  "numPerPage", numPerPage));
         int totalContents=service.countBoardList();
 
         model.addAttribute("totalContents", totalContents);

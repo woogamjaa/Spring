@@ -4,9 +4,12 @@ import com.bs.spring.board.model.dto.Board;
 
 
 import java.util.List;
+import java.util.Map;
 
 public interface BoardService {
-    int saveBoard(Board board);
-    List<Board> selectBoardList();
+
+    List<Board> selectBoardList(Map<String, Integer> map);
+    int insertBoardList();
     int countBoardList();
+
 }
