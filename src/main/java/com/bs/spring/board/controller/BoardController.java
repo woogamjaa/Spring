@@ -32,7 +32,7 @@ public class BoardController {
 //    }
 
     @GetMapping("/boardlist.do")
-    public String boardlist(HttpServletRequest request,Model model,
+    public String boardlist(Model model,
                             @RequestParam(defaultValue = "1") int cPage,
                             @RequestParam(defaultValue = "5") int numPerPage) {
         List<Board> boards=service.selectBoardList(Map.of("cPage", cPage ,  "numPerPage", numPerPage));

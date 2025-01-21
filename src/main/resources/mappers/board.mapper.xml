@@ -11,6 +11,8 @@
     </select>
 
    <insert id="insertBoardList" parameterType="board">
-        INSERT INTO BOARD
+        INSERT INTO BOARD VALUES (
+                                  SEQ_BOARD.NEXTVAL,#{}
+                                 )
     </insert>
 </mapper>

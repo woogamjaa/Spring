@@ -3,7 +3,11 @@
 <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 <section id="board-container" class="container">
     <p>총 ${totalContents }건의 게시물이 있습니다.</p>
-    <button >글쓰기</button>
+    <c:if test="${loginMember!=null}">
+    <button class="btn btn-success" onclick="location.assign('${pageContext.request.contextPath}/board/boardwrite.do');">
+        글쓰기
+    </button>
+    </c:if>
     <table id="tbl-board" class="table table-striped table-hover">
         <tr>
             <th>번호</th>
