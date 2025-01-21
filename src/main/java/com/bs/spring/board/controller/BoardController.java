@@ -63,12 +63,12 @@ public class BoardController {
 
 
     @PostMapping(value = "/boardwriteend.do")
-    public String insertboardList (Board board , Model model, MultipartFile upFile,
+    public String insertboardList (Board board , Model model, MultipartFile[] upFile,
                                    HttpSession session) { //따로 저장하는 짓을 해야함.
 
-        log.debug("파일명" + upFile.getOriginalFilename());
-        log.debug("파일크기" + upFile.getSize());
-        log.debug("{}",board);
+//        log.debug("파일명" + upFile.getOriginalFilename());
+//        log.debug("파일크기" + upFile.getSize());
+//        log.debug("{}",board);
 
         //파일 저장하기
         //1. 파일을 저장할 절대 경로 필요 ->
@@ -77,8 +77,10 @@ public class BoardController {
         if(!dir.exists()){dir.mkdirs();} // 존재하지 않으면 폴더를 생성한다.
         if (upFile!=null){
 
+            for(MultipartFile file : upFile){
+
             //2.리네임규칙을 생성
-            String oriname=upFile.getOriginalFilename();
+            String oriname=file.getOriginalFilename();
 
             //2-1 원본 파일 확장자 가져오기
             String ext=oriname.substring(oriname.lastIndexOf("."));
@@ -99,12 +101,13 @@ public class BoardController {
             //MultipartFile 클래스가 제공하는 tranferTo메소드를 이용해서 저장
 
             try{
-                upFile.transferTo(new File(path, rename));
+                file.transferTo(new File(path, rename));
             }catch(IOException e) {
                 e.printStackTrace();
-                log.error(upFile.getOriginalFilename()+"파일 저장 실패");
+                log.error(file.getOriginalFilename()+"파일 저장 실패");
             }
         }
+            }
 
         return "redirect:/board/boardlist.do";
     }
