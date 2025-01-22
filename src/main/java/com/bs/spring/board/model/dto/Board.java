@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Board {
-    private Long boardNo;
+    private long boardNo;
     private String boardTitle;
     private String boardWriter;
     private String boardContent;

@@ -56,7 +56,7 @@ public class BoardServiceImpl implements BoardService {
     @Override
     public Board findBoardByNo(int no) {
      // public Map<String,Object> findAttachByNo(int no) {
-        Board board = dao.findBoardByNo(session, no);
+       // Board board = dao.findBoardByNo(session, no);
         // 1개 게시물에 1개이상 이라서 1대다 관계 이런식으로 가져와도 됨.
         //List<Attachment> files=dao.findAttachByNo(session,no);
         //board.setFiles(files);

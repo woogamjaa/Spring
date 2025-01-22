@@ -33,20 +33,20 @@
         <result column="boardcontent" property="boardContent"/>
         <result column="boardreadcount" property="boardReadCount"/>
         <result column="boarddate" property="boardDate"/>
-        <collection property="files" ofType="attachment" column="boardno">
-            <id column="attachmentno" property="attachmentNo"/>
-            <result column="originalfilename" property="originalFileName"/>
-            <result column="renamedfilename" property="renamedFileName"/>
-            <result column="downloadcount" property="downloadCount"/>
-            <result column="uploaddate" property="uploadDate"/>
-        </collection>
+<!--        <collection property="files" ofType="attachment" column="boardno">-->
+<!--            <id column="attachmentno" property="attachmentNo"/>-->
+<!--            <result column="originalfilename" property="originalFileName"/>-->
+<!--            <result column="renamedfilename" property="renamedFileName"/>-->
+<!--            <result column="downloadcount" property="downloadCount"/>-->
+<!--            <result column="uploaddate" property="uploadDate"/>-->
+<!--        </collection>-->
     </resultMap>
 
 
-    <select id="findBoardByNo" parameterType="_int" resultMap="boardMap">
-        SELECT * FROM BOARD
-              LEFT JOIN ATTACHMENT USING (BOARDNO)
-                 WHERE BOARDNO=#{no}
+    <select id="findBoardByNo" parameterType="_int" resultType="board">
+        SELECT * FROM BOARD WHERE BOARDNO=#{no}
+--               LEFT JOIN ATTACHMENT USING (BOARDNO)
+--                  WHERE BOARDNO=#{no}
     </select>
 
 
