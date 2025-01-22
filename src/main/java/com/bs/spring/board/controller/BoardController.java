@@ -6,11 +6,12 @@ import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
 
 import com.bs.spring.common.error.MyException;
-import lombok.Getter;
+import com.bs.spring.common.myannotation.MyAnnotation;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.security.core.parameters.P;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -47,6 +48,10 @@ public class BoardController {
     public String boardlist(Model model,
                             @RequestParam(defaultValue = "1") int cPage,
                             @RequestParam(defaultValue = "5") int numPerPage) {
+
+//        if(1==1) throw new MyException("일부러 발생시킨 에러");
+
+
         List<Board> boards=service.selectBoardList(Map.of("cPage", cPage ,  "numPerPage", numPerPage));
         int totalContents=service.countBoardList();
         String pageBar= PageFactory.pageBar(cPage,numPerPage,totalContents,"boardlist.do");
@@ -149,6 +154,7 @@ public class BoardController {
         return "boards/boardDetail";
     }
 
+    @MyAnnotation
     @GetMapping("/filedown.do")
     public void fileDownload(String oriname, String rename,
                              HttpServletResponse response,
