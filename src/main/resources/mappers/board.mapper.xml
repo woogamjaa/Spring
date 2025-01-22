@@ -24,19 +24,16 @@
         INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENTNO.NEXTVAL,#{boardNo},
                                        #{originalFileName}, #{renamedFileName}
                                       ,default,default,default)
-
     </insert>
 
-
-    <!--컬렉션 써야하는데.-->
     <resultMap id="boardMap" type="board">
         <id column="boardno" property="boardNo"/>
-        <result column="boardtitle" property="boardTitle" javaType="String" jdbcType="VARCHAR"/>
+        <result column="boardtitle" property="boardTitle"/>
         <result column="boardwriter" property="boardWriter"/>
         <result column="boardcontent" property="boardContent"/>
         <result column="boardreadcount" property="boardReadCount"/>
         <result column="boarddate" property="boardDate"/>
-        <collection property="files" ofType="attachment">
+        <collection property="files" ofType="attachment" column="boardno">
             <id column="attachmentno" property="attachmentNo"/>
             <result column="originalfilename" property="originalFileName"/>
             <result column="renamedfilename" property="renamedFileName"/>
@@ -45,10 +42,11 @@
         </collection>
     </resultMap>
 
+
     <select id="findBoardByNo" parameterType="_int" resultMap="boardMap">
         SELECT * FROM BOARD
               LEFT JOIN ATTACHMENT USING (BOARDNO)
-                 WHERE BOARDNO=#{no}   /*BOARD 뿐 아니라 ATTACHMENT 도 가져와야해서 MAP을 만들어야함.*/
+                 WHERE BOARDNO=#{no}
     </select>
 
 

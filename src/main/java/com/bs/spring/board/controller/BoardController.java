@@ -19,10 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
+import java.io.*;
 
-import java.io.IOException;
-import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -154,7 +153,47 @@ public class BoardController {
     public void fileDownload(String oriname, String rename,
                              HttpServletResponse response,
                              OutputStream out, HttpSession session,
-                             @RequestHeader(value="user-agent") String header {
+                             @RequestHeader(value="user-agent") String header) {
+        String path=session.getServletContext().getRealPath("/resources/upload/board");
+        File downloadFile=new File(path,rename);
+        if(downloadFile.exists()){
+            //파일없음 !
+            //에러페이지 전송
+            //throw new
+
+            //트라이 위드 리소스
+        } else {
+            try(FileInputStream fis=new FileInputStream(downloadFile);
+                BufferedInputStream bis=new BufferedInputStream(fis);
+                BufferedOutputStream bos=new BufferedOutputStream(out);){
+
+                //원본파일명으로 다운로드 하기
+                //원본파일명이 한글일때 한글이 깨짐
+                //한글이 깨지지 않게 인코딩 처리하기.
+                boolean isMs=header.contains("Trident") || header.contains("MSIE");
+                String endcodeFilename="";
+                if(isMs){
+                    endcodeFilename= URLEncoder.encode(oriname,"utf-8");
+                    endcodeFilename= endcodeFilename.replace("\\+","%20");
+
+                } else {
+                    endcodeFilename=new String(oriname.getBytes("utf-8"),"ISO-8859-1");
+                }
+
+                response.setContentType("application/octet-stream;charset=utf-8");
+                response.setHeader("Content-Disposition",
+                        "attachment;filename="+endcodeFilename);
+
+                int data=1;
+                while((data=bis.read())!=-1){
+                    bos.write(data);
+                }
+
+            }catch(IOException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 
