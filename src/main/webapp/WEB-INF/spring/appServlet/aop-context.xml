@@ -15,7 +15,7 @@
                 method="" pointcut-ref=>
     -->
 
-    <bean id="xmlAspect" class="com.bs.spring.common.aop.XmlAspect"/>
+    <!--<bean id="xmlAspect" class="com.bs.spring.common.aop.XmlAspect"/>
     <aop:config>
             <aop:aspect ref="xmlAspect">
                 <aop:pointcut id="memoPoint"
@@ -23,6 +23,11 @@
                 <aop:before method="before" pointcut-ref="memoPoint"/>
                 <aop:after method="after" pointcut-ref="memoPoint"/>
             </aop:aspect>
-    </aop:config>
+    </aop:config>-->
+
+
+    <!--어노테이션방식으로 AOP 설정하기-->
+    <aop:aspectj-autoproxy />
+
 
 </beans>

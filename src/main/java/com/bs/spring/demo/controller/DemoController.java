@@ -222,13 +222,13 @@ public class DemoController {
 
     //View 구현체로 응답하기
 
-    @Autowired
-    private  MyView myView;
+    //@Autowired
+    //private  MyView myView;
 
-    @RequestMapping("/demo/demo10.do")
-    public View myViewTest(MyView view, Model model) {
-        model.addAttribute("test","나의 view");
-//      return myView; 이것도 가능. 위에서 받아서.
-        return view;
-    }
+    //@RequestMapping("/demo/demo10.do")
+    //public View myViewTest(MyView view, Model model) {
+     //   model.addAttribute("test","나의 view");
+   //  return myView; 이것도 가능. 위에서 받아서.
+     //   return view;
+    //}
 }
