@@ -2,6 +2,7 @@ package com.bs.spring.common.aop;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.Signature;
 
 @Slf4j
 public class XmlAspect {
@@ -14,8 +15,18 @@ public class XmlAspect {
 
     public void before(JoinPoint joinPoint) {
         log.debug("=== before ===");
+        //실행되는 클래스, 메소드 관련 정보를 확인할 수 있음.
+        Signature sig = joinPoint.getSignature();
+        log.debug(sig.getDeclaringTypeName() + "." + sig.getName());
+        log.debug("========================");
 
     }
 
+    public void after(JoinPoint joinPoint) {
+        log.debug("=== after ===");
+        Signature sig = joinPoint.getSignature();
+        log.debug(sig.getDeclaringTypeName() + "." + sig.getName());
+        log.debug("========================");
 
+    }
 }

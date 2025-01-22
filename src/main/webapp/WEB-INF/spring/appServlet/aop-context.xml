@@ -21,6 +21,7 @@
                 <aop:pointcut id="memoPoint"
                               expression="execution(* com.bs.spring.memo..*(..))"/>
                 <aop:before method="before" pointcut-ref="memoPoint"/>
+                <aop:after method="after" pointcut-ref="memoPoint"/>
             </aop:aspect>
     </aop:config>
 
