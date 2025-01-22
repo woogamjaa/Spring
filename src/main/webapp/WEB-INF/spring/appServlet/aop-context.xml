@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+    <!--aop 설정하기.
+        1.aspect클래스를 bean으로 등록
+        2.aop설정 (적용할대상설정(pointcut), 실행시점(advice), 실행메소드설정)
+        <aop:config>태그
+            <aop:aspect ref="">
+                <aop:pointcut expression="표현식"> 적용할 대상(메소드) -> 표현식 표현
+                <aop:befㅐre||after||around||afterReturning||afterThrowing
+                method="" pointcut-ref=>
+    -->
+
+    <bean id="xmlAspect" class="com.bs.spring.common.aop.XmlAspect"/>
+    <aop:config>
+            <aop:aspect ref="xmlAspect">
+                <aop:pointcut id="memoPoint"
+                              expression="execution(* com.bs.spring.memo..*(..))"/>
+                <aop:before method="before" pointcut-ref="memoPoint"/>
+            </aop:aspect>
+    </aop:config>
+
+</beans>
