@@ -22,10 +22,8 @@
                     <td>${vs.count}</td>
 
                     <td>
-                        <a href="${pageContext.request.contextPath}/board/boarddetail.do">${board.boardTitle}</a>
+                        <a href="${pageContext.request.contextPath}/board/boarddetail.do?no=${board.boardNo}">${board.boardTitle}</a>
                     </td>
-
-                    <td>${board.boardTitle}</td>
                     <td>${board.boardWriter}</td>
                     <td>${board.boardDate}</td>
                     <td><img src="${pageContext.request.contextPath}/resources/images/file.png"></td>

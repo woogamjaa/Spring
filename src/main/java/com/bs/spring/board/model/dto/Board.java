@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -19,4 +20,5 @@ public class Board {
     private String boardContent;
     private Date boardDate;
     private Integer boardReadCount;
+    private List<Attachment> files;
 }

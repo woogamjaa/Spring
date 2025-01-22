@@ -13,6 +13,6 @@ public interface BoardService {
     List<Board> selectBoardList(Map<String, Integer> map);
     int insertBoardList(Board board, List<Attachment> files);
     int countBoardList();
-    Board findBoardByNo(int id);
+    Board findBoardByNo(int no);
 
 }

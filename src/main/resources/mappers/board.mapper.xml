@@ -28,12 +28,31 @@
     </insert>
 
 
-    <select id="findBoardByNo" parameterType="_int" resultType="board">
-        SELECT * FROM BOARD WHERE BOARDNO={no}
+    <!--컬렉션 써야하는데.-->
+    <resultMap id="boardMap" type="board">
+        <id column="boardno" property="boardNo"/>
+        <result column="boardtitle" property="boardTitle" javaType="String" jdbcType="VARCHAR"/>
+        <result column="boardwriter" property="boardWriter"/>
+        <result column="boardcontent" property="boardContent"/>
+        <result column="boardreadcount" property="boardReadCount"/>
+        <result column="boarddate" property="boardDate"/>
+        <collection property="files" ofType="attachment">
+            <id column="attachmentno" property="attachmentNo"/>
+            <result column="originalfilename" property="originalFileName"/>
+            <result column="renamedfilename" property="renamedFileName"/>
+            <result column="downloadcount" property="downloadCount"/>
+            <result column="uploaddate" property="uploadDate"/>
+        </collection>
+    </resultMap>
+
+    <select id="findBoardByNo" parameterType="_int" resultMap="boardMap">
+        SELECT * FROM BOARD
+              LEFT JOIN ATTACHMENT USING (BOARDNO)
+                 WHERE BOARDNO=#{no}   /*BOARD 뿐 아니라 ATTACHMENT 도 가져와야해서 MAP을 만들어야함.*/
     </select>
 
 
     <select id="findAttachByNo" parameterType="_int" resultType="attachment">
-        SELECT * FROM ATTACHMENT WHERE BOARDNO={no}
+        SELECT * FROM ATTACHMENT WHERE BOARDNO=#{no}
     </select>
 </mapper>
