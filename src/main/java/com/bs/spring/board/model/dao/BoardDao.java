@@ -14,4 +14,5 @@ public interface BoardDao {
     int insertBoardList(SqlSession session, Board board);
     int countBoardList(SqlSession session);
     int insertAttachment(SqlSession session, Attachment attachment);
+    Board findBoardByNo(SqlSession session, int no);
 }

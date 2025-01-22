@@ -6,6 +6,7 @@ import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
 
 import com.bs.spring.common.error.MyException;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -142,4 +143,12 @@ public class BoardController {
         }
         return viewName;
     }
+
+    @GetMapping("/boarddetail.do")
+    public String boardDetail(int no, Model model) {
+        Board d = service.findBoardByNo(no);
+        model.addAttribute("board", d);
+        return "boards/boardDetail";
+    }
+
 }

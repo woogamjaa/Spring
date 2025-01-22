@@ -34,4 +34,9 @@ public class BoardDaoImpl implements BoardDao {
     public int insertAttachment(SqlSession session, Attachment attachment) {
         return session.insert("board.insertAttachment", attachment);
     }
+
+    @Override
+    public Board findBoardByNo(SqlSession session, int no) {
+        return session.selectOne("board.findBoardByNo", no);
+    }
 }

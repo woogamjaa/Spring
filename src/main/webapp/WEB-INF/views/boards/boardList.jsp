@@ -20,6 +20,11 @@
         <c:forEach var="board" items="${boards}" varStatus="vs">
                 <tr>
                     <td>${vs.count}</td>
+
+                    <td>
+                        <a href="${pageContext.request.contextPath}/board/boarddetail.do">${board.boardTitle}</a>
+                    </td>
+
                     <td>${board.boardTitle}</td>
                     <td>${board.boardWriter}</td>
                     <td>${board.boardDate}</td>

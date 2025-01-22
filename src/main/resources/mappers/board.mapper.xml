@@ -26,4 +26,14 @@
                                       ,default,default,default)
 
     </insert>
+
+
+    <select id="findBoardByNo" parameterType="_int" resultType="board">
+        SELECT * FROM BOARD WHERE BOARDNO={no}
+    </select>
+
+
+    <select id="findAttachByNo" parameterType="_int" resultType="attachment">
+        SELECT * FROM ATTACHMENT WHERE BOARDNO={no}
+    </select>
 </mapper>

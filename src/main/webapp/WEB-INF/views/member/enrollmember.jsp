@@ -34,7 +34,7 @@
             <input type="checkbox" class="form-check-input" name="hobby" id="hobby3" value="게임"><label for="hobby3" class="form-check-label">게임</label>&nbsp;
             <input type="checkbox" class="form-check-input" name="hobby" id="hobby4" value="여행"><label for="hobby4" class="form-check-label">여행</label>&nbsp;
         </div>
-        <br />
+        <br/>
         <input type="submit" class="btn btn-outline-success" value="가입" >&nbsp;
         <input type="reset" class="btn btn-outline-success" value="취소">
     </form:form>
