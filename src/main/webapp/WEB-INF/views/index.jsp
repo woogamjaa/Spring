@@ -20,10 +20,19 @@
     <script>
         const dataAjax=(e)=>{
             fetch("${path}/ajax/dataAjax")
-                .then(response=>response.text())
+                .then(response=>response.json())
                 .then(data=>{
                     console.log(data);
-                    document.getElementById("data-container").innerHTML=data;
+                    const ul=document.createElement("ul");
+                    data.map(e=>{
+                        const li=document.createElement("li");
+                        li.innerText=e;
+                        return li;
+                    }).forEach(li=>{
+                        ul.appendChild(li);
+                    });
+                    document.getElementById("data-container").innerHTML="";
+                    document.getElementById("data-container").appendChild(ul);
                 })
         }
         const basicAjax=()=>{

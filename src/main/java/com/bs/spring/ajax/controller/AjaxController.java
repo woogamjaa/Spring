@@ -13,13 +13,18 @@ public class AjaxController {
 
     @RequestMapping("/basicAjax")
     public String basicAjax() {
+
         return "ajax/basicAjax";
     }
 
     @RequestMapping("/dataAjax")
     @ResponseBody
+    //객체는 기본적으로 안보내 진다.
     public List<String> dataAjax() {
-        List<String> names=List.of("유병승","김통통","우감자","오반장","최선생");
+
+        //
+        List<String> names=List.of("유병승","김통통","우감자","오반장","최선생"); //jackson 이용해서 배열로 해줌.
+
         return names;
     }
 }
