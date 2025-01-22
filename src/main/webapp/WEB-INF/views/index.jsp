@@ -18,52 +18,60 @@
 
 
     <script>
-        const dataAjax=(e)=>{
-            fetch("${path}/ajax/dataAjax")
+        const loadingfunc=(id)=> {
+            document.getElementById(id).innerHTML = `<div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden"></span>
+            </div>`
+            }
+
+
+                const dataAjax=(e)=>{
+                loadingfunc("data-container");
+                fetch("${path}/ajax/dataAjax")
                 .then(response=>response.json())
                 .then(data=>{
-                    console.log(data);
-                    const ul=document.createElement("ul");
-                    data.map(e=>{
-                        const li=document.createElement("li");
-                        li.innerText=e;
-                        return li;
-                    }).forEach(li=>{
-                        ul.appendChild(li);
-                    });
-                    document.getElementById("data-container").innerHTML="";
-                    document.getElementById("data-container").appendChild(ul);
-                })
-        }
-        const basicAjax=()=>{
-            //fetch
-            //fetch("url주소"[,{추가설정}])
-            //.then((response)=>{
-            // response : 서버에서 응답한 데이터를 객체로 생성한것
-            // response.ok : 정상적인 응답(true, false), response.status : 상태코드
-            // response.text() : 서버가 responsebody에 저장한 데이터를 text로 가져오는 함수
-            // response.json() : 서버가 responsebody에 저장한 데이터를 json으로 가져오는 함수
-            // return 값 (responsebody 데이터);
-            // })
-            //.then(data=>) {
-            // 이전 콜백함수에서 반환한 데이터가 data변수에 전달됨.
-            // })
-            //.catch(error=>{
-            //  에러처리 로직 작성.
-            // })
-
-            fetch("${path}/ajax/basicAjax")
+                console.log(data);
+                const ul=document.createElement("ul");
+                data.map(e=>{
+                const li=document.createElement("li");
+                li.innerText=e;
+                return li;
+            }).forEach(li=>{
+                ul.appendChild(li);
+            });
+                document.getElementById("data-container").innerHTML="";
+                document.getElementById("data-container").appendChild(ul);
+            })
+            }
+                const basicAjax=()=>{
+                //fetch
+                //fetch("url주소"[,{추가설정}])
+                //.then((response)=>{
+                // response : 서버에서 응답한 데이터를 객체로 생성한것
+                // response.ok : 정상적인 응답(true, false), response.status : 상태코드
+                // response.text() : 서버가 responsebody에 저장한 데이터를 text로 가져오는 함수
+                // response.json() : 서버가 responsebody에 저장한 데이터를 json으로 가져오는 함수
+                // return 값 (responsebody 데이터);
+                // })
+                //.then(data=>) {
+                // 이전 콜백함수에서 반환한 데이터가 data변수에 전달됨.
+                // })
+                //.catch(error=>{
+                //  에러처리 로직 작성.
+                // })
+                loadingfunc("data-container");
+                fetch("${path}/ajax/basicAjax")
                 .then(response=>{console.log(response)
-                    return response.text();
-                })
+                return response.text();
+            })
                 .then(data=>{
-                    console.log(data);
-                    document.getElementById("data-container").innerHTML=data;
+                console.log(data);
+                document.getElementById("data-container").innerHTML=data;
 
-                 });
-        }
+            });
+            }
     </script>
 
 
-</section>
+    </section>
 <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
