@@ -21,7 +21,7 @@
     </insert>
 
     <insert id="insertAttachment" parameterType="attachment">
-        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENTN.NEXTVAL,#{boardNo},
+        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENTNO.NEXTVAL,#{boardNo},
                                        #{originalFileName}, #{renamedFileName}
                                       ,default,default,default)
     </insert>

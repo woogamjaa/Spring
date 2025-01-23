@@ -3,11 +3,13 @@ package com.bs.spring.ajax.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+//@Controller
+@RestController // @Controller +@ResponseBody
 @RequestMapping("/ajax")
 public class AjaxController {
 
@@ -21,11 +23,10 @@ public class AjaxController {
             }
         };
         r.run();
-        return "ajax/basicAjax";
+        return "ajax/basicAjax"; //메소드가 모두 ResponseBody로 해서 넘겨준다.
     }
 
     @RequestMapping("/dataAjax")
-    @ResponseBody
     //객체는 기본적으로 안보내 진다.
     public List<String> dataAjax() {
         Runnable r =()-> {
