@@ -1,6 +1,7 @@
 package com.bs.spring.common.config;
 
 import com.bs.spring.common.error.MyException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.MessageSource;
@@ -88,5 +89,11 @@ public class MyWebAppConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
        registry.addMapping("/api/**")
                .allowedOrigins("http://localhost:52330");
+    }
+
+
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
     }
 }

@@ -192,7 +192,13 @@
     </dependency>
 
 
+    <!--websocket모듈 가져오기-->
 
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-websocket</artifactId>
+      <version>${org.springframework-version}</version>
+    </dependency>
 
   </dependencies>
   <build>

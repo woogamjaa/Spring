@@ -77,6 +77,9 @@
                             님, 환영합니다.
                         </a>
                     </span>
+                    <button class="btn btn-outline-dark" onclick="openChatting();">
+                        채팅하기
+                    </button>
                     <button class="btn btn-outline-danger" onclick="location.replace('${path}/member/logout.do')">
                         로그아웃
                     </button>
@@ -112,4 +115,14 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            const openChatting=()=>{
+                open("${path}/chattingpage","blank","width=400,height=700");
+            }
+        </script>
+
+
     </header>
+
+
