@@ -181,6 +181,19 @@
       <version>1.9.19</version>
     </dependency>
 
+
+
+    <!--엑셀 라이브러리-->
+
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.2.3</version>
+    </dependency>
+
+
+
+
   </dependencies>
   <build>
     <finalName>springcore</finalName>

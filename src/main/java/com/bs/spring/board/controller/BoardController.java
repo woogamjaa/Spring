@@ -6,6 +6,7 @@ import com.bs.spring.board.model.service.BoardService;
 import com.bs.spring.common.PageFactory;
 
 import com.bs.spring.common.error.MyException;
+import com.bs.spring.common.excelconvert.ExcelForBoard;
 import com.bs.spring.common.myannotation.MyAnnotation;
 
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.View;
 
 
 import javax.servlet.http.HttpServletResponse;
@@ -201,6 +203,14 @@ public class BoardController {
 
         }
 
+    }
+
+    //엑셀다운로드 시키기
+    @GetMapping("/exceldownload")
+    public View excelDownload(Model model) {
+        List<Board> boards=service.selectBoardList(Map.of("cPage", 1,"numPerPage", 20));
+        model.addAttribute("boards", boards);
+        return new ExcelForBoard();
     }
 
 }

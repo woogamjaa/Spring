@@ -27,8 +27,16 @@
     </button>
 
     <button class="btn btn-outline-warning" onclick="saveMember();">회원가입</button>
+    <button onclick="excelDownload();">엑셀다운로드</button>
 
     <script>
+        const excelDownload=()=>{
+            location.assign("${path}/board/exceldownload")
+        }
+
+
+
+
         const saveMember=()=>{
             //post 방식으로 저장
             fetch("${path}/api/member",{
