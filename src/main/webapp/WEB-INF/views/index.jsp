@@ -14,10 +14,33 @@
     <button class="btn btn-outline-success" onclick="dataAjax(event)">
         서버에서 전송하는 데이터 가져오기
     </button>
+
+
+    <button class="btn btn-outline-dark" onclick="searchBoard();">
+        게시글 조회
+    </button>
     <div id="data-container"></div>
 
 
     <script>
+        const searchBoard=()=>{
+            loadingfunc("data-container");
+            fetch("${path}/api/boards")
+                .then(response=>{
+                    if(response.ok) return response.json();
+                    else throw new Error("게시글 조회실패");
+                }).then (boards=>{
+                    //요청성공
+                    console.log(boards);
+                    document.getElementById("data-container").innerHTML="";
+
+                }).catch(e=>{
+                alert(e);
+                })
+        }
+
+
+
         const loadingfunc=(id)=> {
             document.getElementById(id).innerHTML = `<div class="spinner-border text-dark" role="status">
             <span class="visually-hidden"></span>
