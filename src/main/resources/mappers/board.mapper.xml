@@ -42,11 +42,17 @@
 <!--        </collection>-->
     </resultMap>
 
+    <select id="findBoard"
 
     <select id="findBoardByNo" parameterType="_int" resultType="board">
-        SELECT * FROM BOARD WHERE BOARDNO=#{no}
+        SELECT * FROM BOARD WHERE BOARDNO=#{no} ORDER BY BOARDDATE DESC
 --               LEFT JOIN ATTACHMENT USING (BOARDNO)
 --                  WHERE BOARDNO=#{no}
+    </select>
+
+
+    <select id="findBoard" parameterType="_int" resultType="board">
+        SELECT * FROM BOARD  ORDER BY BOARDDATE DESC
     </select>
 
 

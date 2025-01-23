@@ -26,7 +26,7 @@
         <div id="header-container">
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="${path}/">
                 <img alt="로고" src="${path}/resources/images/logo-spring.png"
                      width="50px">
             </a>
@@ -38,7 +38,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul	class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="">HOME</a>
+                        <a class="nav-link" href="${path}/">HOME</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="${path}/demo/demo.do">DEMO(controller-test)</a>
