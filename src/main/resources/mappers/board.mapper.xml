@@ -3,7 +3,7 @@
 <mapper namespace="board">
 
     <select id="selectBoardList" resultType="board">  /*파라미터값 = rowbounds 는 mybatis에서 알아서 사용*/
-        SELECT * FROM BOARD
+        SELECT * FROM BOARD ORDER BY BOARDNO DESC
     </select>
 
     <select id="countBoardList" resultType="_int"> /*  _int 는 mabatis에서 사용하는 별칭이라 사용하는게 맞다.*/
@@ -21,7 +21,7 @@
     </insert>
 
     <insert id="insertAttachment" parameterType="attachment">
-        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENTNO.NEXTVAL,#{boardNo},
+        INSERT INTO ATTACHMENT VALUES (SEQ_ATTACHMENTN.NEXTVAL,#{boardNo},
                                        #{originalFileName}, #{renamedFileName}
                                       ,default,default,default)
     </insert>
@@ -42,7 +42,7 @@
 <!--        </collection>-->
     </resultMap>
 
-    <select id="findBoard"
+
 
     <select id="findBoardByNo" parameterType="_int" resultType="board">
         SELECT * FROM BOARD WHERE BOARDNO=#{no} ORDER BY BOARDDATE DESC
@@ -52,7 +52,7 @@
 
 
     <select id="findBoard" parameterType="_int" resultType="board">
-        SELECT * FROM BOARD  ORDER BY BOARDDATE DESC
+        SELECT * FROM BOARD  ORDER BY BOARDNO DESC
     </select>
 
 

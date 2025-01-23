@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,9 @@ public class BoardServiceImpl implements BoardService {
         return dao.countBoardList(session);
     }
 
+
     @Override
+    @Transactional
     public int insertBoardList(Board board, List<Attachment> files) {
         try {
             int result = dao.insertBoardList(session, board);
@@ -50,7 +53,6 @@ public class BoardServiceImpl implements BoardService {
         }
         return 0;
     }
-
 
     //Map을 이용하여 처리하는 방식을 예시로 듬
     @Override
