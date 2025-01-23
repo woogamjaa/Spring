@@ -15,6 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
+@CrossOrigin("*")
 public class RestAPIController {
     private final BoardService boardService;
     private final MemberService memberService;
