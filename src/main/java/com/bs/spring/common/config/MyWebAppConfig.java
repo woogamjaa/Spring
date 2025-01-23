@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.HandlerExceptionResolver;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -80,5 +81,12 @@ public class MyWebAppConfig implements WebMvcConfigurer {
 //        return multipartResolver;
 //    }
 
+    //crossorigin허용하기
 
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+       registry.addMapping("/api/**")
+               .allowedOrigins("http://localhost:52330");
+    }
 }

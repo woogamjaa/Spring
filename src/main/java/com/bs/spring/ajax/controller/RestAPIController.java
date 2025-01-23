@@ -15,7 +15,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
-@CrossOrigin("*")
+//@CrossOrigin("*") //외부에서 접근하는 방법.
 public class RestAPIController {
     private final BoardService boardService;
     private final MemberService memberService;
