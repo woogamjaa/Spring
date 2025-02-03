@@ -35,7 +35,7 @@
                     password-parameter="pw"
                     login-processing-url="/loginend.do"
                     authentication-success-forward-url="/loginsuccess"
-
+                    authentication-failure-forward-url="/loginfail"
                 />
             <!--
                 <sercurity:csrf disabled="true">
