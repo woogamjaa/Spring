@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set  var="path" value="${pageContext.request.contextPath}"/>
+<c:set var="loginMember" value="${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal}"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,7 @@
 <body>
 <div id="container">
     <header>
+        <p>로그인 정보 : ${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal==null}</p>
         <div id="header-container">
         </div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -73,14 +75,14 @@
                 <c:if test="${loginMember!=null}">
                     <span>
                         <a href="">
-                            <c:out value="${loginMember.userName}"/>
+                            <c:out value="${loginMember.username}"/>
                             님, 환영합니다.
                         </a>
                     </span>
                     <button class="btn btn-outline-dark" onclick="openChatting();">
                         채팅하기
                     </button>
-                    <button class="btn btn-outline-danger" onclick="location.replace('${path}/member/logout.do')">
+                    <button class="btn btn-outline-danger" onclick="location.replace('${path}/logout')">
                         로그아웃
                     </button>
                 </c:if>
