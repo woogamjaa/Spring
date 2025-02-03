@@ -13,7 +13,7 @@
     <insert id="saveMember" parameterType="member">
         INSERT INTO MEMBER VALUES(#{userId},
                            #{password},
-                           #{userName},
+                           #{name},
                            #{gender},
                            #{age},
                            #{email},

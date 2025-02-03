@@ -16,7 +16,7 @@
         <form:errors path="password"/>
 
         <input type="password" class="form-control" placeholder="비밀번호확인" id="password2" required>
-        <input type="text" class="form-control" placeholder="이름" name="userName" id="userName" required>
+        <input type="text" class="form-control" placeholder="이름" name="name" id="name" required>
         <input type="number" class="form-control" placeholder="나이" name="age" id="age">
         <input type="email" class="form-control" placeholder="이메일" name="email" id="email" required>
         <input type="tel" class="form-control" placeholder="전화번호 (예:01012345678)" name="phone" id="phone" maxlength="11" required>
