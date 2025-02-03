@@ -29,10 +29,14 @@
                 login-processing-url : 인증을 처리하는 URL주소를 설정
             -->
                     <!--로그인 폼에 대한 설정을 하는것.-->
+                    <!--loginend.do는 에러난 적 없는데 loginsuccess 로 가면서 얘가 없어서 404가 뜨는거. -->
                 <security:form-login
                     username-parameter="userId"
                     password-parameter="pw"
-                    login-processing-url="/loginend.do"/>
+                    login-processing-url="/loginend.do"
+                    authentication-success-forward-url="/loginsuccess"
+
+                />
             <!--
                 <sercurity:csrf disabled="true">
             -->
@@ -53,8 +57,8 @@
                     access : ckeks, 하용여부에 대한 설정(permitAll(), hasAnyAuthority(,))
 
             -->
-            <security:intercept-url pattern="/**" access="hasAnyAuthority('manager')"/>
-            <!--admin권한인데 manager했기에 403 이 뜬다. -->
+            <security:intercept-url pattern="/**" access="hasAnyAuthority('admin')"/>
+            <!--admin권한인데 manager했기에 403(권한문제) 이 뜬다. -->
 
         </security:http>
 
