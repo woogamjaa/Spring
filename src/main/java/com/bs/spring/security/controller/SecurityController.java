@@ -3,8 +3,10 @@ package com.bs.spring.security.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -12,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SecurityController {
     @RequestMapping("/loginsuccess")
     public String loginend() {
+        //로그인한 사용자 정보 확인하기
+        Object loginMember=SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal();
+
+        log.debug("{}",loginMember);
+
         log.debug("로그인 성공 !!");
         return "redirect:/";
     }
