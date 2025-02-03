@@ -69,7 +69,7 @@
             <security:intercept-url pattern="/loginpage" access="permitAll()"/>
             <security:intercept-url pattern="/resources/**" access="permitAll()"/>
             <security:intercept-url pattern="/logoutsuccess" access="permitAll()"/>
-            <security:intercept-url pattern="/**" access="hasAnyAuthority('admin')"/>
+            <security:intercept-url pattern="/**" access="hasAnyAuthority('admin','user')"/>
             <!--admin권한인데 manager했기에 403(권한문제) 이 뜬다. -->
         </security:http>
 
