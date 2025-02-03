@@ -30,12 +30,14 @@
             -->
                     <!--로그인 폼에 대한 설정을 하는것.-->
                     <!--loginend.do는 에러난 적 없는데 loginsuccess 로 가면서 얘가 없어서 404가 뜨는거. -->
+                    <!--302는 인증받지 못했을때 라서 -> 로그인 페이지는 내가 만든거라 허용안했음? 무한루프. / 어드민 권한이 있어야함 -->
                 <security:form-login
                     username-parameter="userId"
                     password-parameter="pw"
                     login-processing-url="/loginend.do"
                     authentication-success-forward-url="/loginsuccess"
                     authentication-failure-forward-url="/loginfail"
+                    login-page="/loginpage"
                 />
             <!--
                 <sercurity:csrf disabled="true">
@@ -57,9 +59,13 @@
                     access : ckeks, 하용여부에 대한 설정(permitAll(), hasAnyAuthority(,))
 
             -->
+
+            <!--** 은 후손까지다. 해서 resources 를 전체허용하여 css디자인을 가져옴. -->
+
+            <security:intercept-url pattern="/loginpage" access="permitAll()"/>
+            <security:intercept-url pattern="/resources/**" access="permitAll()"/>
             <security:intercept-url pattern="/**" access="hasAnyAuthority('admin')"/>
             <!--admin권한인데 manager했기에 403(권한문제) 이 뜬다. -->
-
         </security:http>
 
             <!--

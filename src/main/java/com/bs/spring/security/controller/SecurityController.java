@@ -32,4 +32,10 @@ public class SecurityController {
         return "common/msg";
 
     }
+
+    @RequestMapping("/loginpage")
+    public String loginpage(Model model) {
+        return "common/login";
+                
+    }
 }
