@@ -82,7 +82,7 @@
                     <button class="btn btn-outline-dark" onclick="openChatting();">
                         채팅하기
                     </button>
-                    <button class="btn btn-outline-danger" onclick="location.replace('${path}/logout')">
+                    <button class="btn btn-outline-danger" onclick="location.replace('${path}/logout.do')">
                         로그아웃
                     </button>
                 </c:if>

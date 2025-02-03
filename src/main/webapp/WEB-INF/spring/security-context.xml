@@ -52,6 +52,10 @@
                 logout-success-url : 로그아웃 처리 후 실행할 서비스 url
             -->
 
+            <security:logout
+                logout-url="/logout.do"
+                logout-success-url="/logoutsuccess"/>
+
             <!--
                 요청을 차단/허용할 url설정하기
                 <security:intercept-url>태그를 이용
