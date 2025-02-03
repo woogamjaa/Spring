@@ -100,7 +100,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="${path}/member/login.do" method="post">
+                    <form action="${path}/loginend.do" method="post">
                         <div class="modal-body">
                             <input type="text" name="userId" class="form-control"
                                    placeholder="아이디입력" required><br/>
