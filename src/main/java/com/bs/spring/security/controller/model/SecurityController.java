@@ -1,12 +1,10 @@
-package com.bs.spring.security.controller;
+package com.bs.spring.security.controller.model;
 
 
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -36,6 +34,6 @@ public class SecurityController {
     @RequestMapping("/loginpage")
     public String loginpage(Model model) {
         return "common/login";
-                
+
     }
 }

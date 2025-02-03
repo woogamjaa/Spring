@@ -5,17 +5,24 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Member {
+public class Member implements Serializable, UserDetails {
     @NotEmpty(message = "헤헤")
 
     @Pattern(regexp = ".{4,}", message = "4 글자이상 한글만 가능합니다.")
@@ -24,9 +31,42 @@ public class Member {
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>])(?=.*[a-zA-Z]).{8,}$", message = "비밀번호는 8자 이상이어야 하며, 숫자와 특수기호를 포함해야 합니다.")
     private String password;
 
-    private String userName;
+    private String name;
 
     private String gender;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> auth = new ArrayList<>();
+        if (userId.equals("admin")) auth.add(new SimpleGrantedAuthority("admin"));
+        auth.add(new SimpleGrantedAuthority("user"));
+        return auth;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.userId;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 
     @Min(value=14 , message = "14새 이상 가능.")
     private int age;
