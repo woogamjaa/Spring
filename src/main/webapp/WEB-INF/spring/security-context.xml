@@ -73,6 +73,14 @@
             <security:intercept-url pattern="/memo/**" access="hasAuthority('admin')"/>
             <security:intercept-url pattern="/**" access="hasAnyAuthority('admin','user')"/>
             <!--admin권한인데 manager했기에 403(권한문제) 이 뜬다. -->
+
+
+            <!--권한이 없는 사용자가 접속했을때 error페이지로 연결하기-->
+            <security:access-denied-handler error-page="/WEB-INF/common/error/runtimeerror.jsp"/>
+
+
+
+
         </security:http>
 
             <!--
@@ -114,5 +122,8 @@
             <constructor-arg index="1" ref="sqlSession"/>
         </bean>
     <import resource="root-context.xml"/>
+
+
+
 </beans>
 
