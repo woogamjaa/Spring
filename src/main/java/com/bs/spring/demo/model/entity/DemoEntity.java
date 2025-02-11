@@ -32,4 +32,15 @@ public class DemoEntity {
     }
 
 
+    public static DemoEntity fromDemo(Demo demo) {
+        DemoEntity demoEntity = new DemoEntity();
+        demoEntity.setDevName(demo.getDevName());
+        demoEntity.setDevEmail(demo.getDevEmail());
+        demoEntity.setDevGender(demo.getDevGender());
+        demoEntity.setDevAge(demo.getDevAge());
+        demoEntity.setDevLang(demo.getDevLang()!=null?String.join(",",demo.getDevLang()):null);
+        return demoEntity;
+    }
+
+
 }

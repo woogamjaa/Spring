@@ -3,6 +3,7 @@ package com.bs.spring.demo.model.service;
 import com.bs.spring.demo.model.dao.DemoDao;
 import com.bs.spring.demo.model.dao.DemoRepository;
 import com.bs.spring.demo.model.dto.Demo;
+import com.bs.spring.demo.model.entity.DemoEntity;
 import jakarta.persistence.EntityManager;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,9 @@ public class DemoServiceImpl implements DemoService {
 
     @Override
     public int insertDemo(Demo demo) {
-        return demoDao.insertDemo(sqlSession, demo);
+      boolean result = demoRepository.insertDemo(entityManager, DemoEntity.fromDemo(demo));
+//        return demoDao.insertDemo(sqlSession, demo);
+        return result ? 1 : 0;
     }
 
     @Override
