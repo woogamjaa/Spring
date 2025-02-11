@@ -200,6 +200,20 @@
       <version>${org.springframework-version}</version>
     </dependency>
 
+
+    <!--하이버네이트-->
+    <dependency>
+    <groupId>org.hibernate.orm</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>6.2.5.Final</version>
+  </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.javax.persistence</groupId>
+      <artifactId>hibernate-jpa-2.1-api</artifactId>
+      <version>1.0.2.Final</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>springcore</finalName>
