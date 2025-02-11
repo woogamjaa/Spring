@@ -2,6 +2,9 @@ package com.bs.spring.common.config;
 
 import com.bs.spring.common.error.MyException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.context.MessageSource;
@@ -95,5 +98,15 @@ public class MyWebAppConfig implements WebMvcConfigurer {
     @Bean
     public ObjectMapper objectMapper() {
         return new ObjectMapper();
+    }
+
+    @Bean
+    public EntityManagerFactory entityManagerFactory() {
+        return Persistence.createEntityManagerFactory("basicjpa");
+    }
+
+    @Bean
+    public EntityManager entityManager(EntityManagerFactory managerFactory) {
+        return managerFactory.createEntityManager();
     }
 }
