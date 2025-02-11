@@ -21,7 +21,6 @@ public class DemoEntity {
     private String devGender;
     private String devLang;
 
-
     public Demo toDemo() {
         return Demo.builder()
                 .devName(this.devName)
@@ -30,7 +29,6 @@ public class DemoEntity {
                 .devLang(devLang!=null?devLang.split(","):null)
                 .build();
     }
-
 
     public static DemoEntity fromDemo(Demo demo) {
         DemoEntity demoEntity = new DemoEntity();

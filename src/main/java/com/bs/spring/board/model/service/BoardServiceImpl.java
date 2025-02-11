@@ -2,9 +2,12 @@ package com.bs.spring.board.model.service;
 
 import com.bs.spring.board.model.dao.BoardDao;
 
+import com.bs.spring.board.model.dao.BoardRepository;
 import com.bs.spring.board.model.dto.Attachment;
 import com.bs.spring.board.model.dto.Board;
 import com.bs.spring.common.error.MyException;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
 import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +23,17 @@ public class BoardServiceImpl implements BoardService {
 
     @Autowired
     private final SqlSession session;
+    private final EntityManagerFactory factor;
     private final BoardDao dao;
 
+    private final EntityManager em;
+    private final BoardRepository repository;
 
     @Override
-    public List<Board> selectBoardList(Map<String, Integer> param) {
-        return dao.selectBoardList(session, param);
+    public List<Board> selectBoardList(Map<String, Integer> param)
+    {
+        return repository.findall(em,param).stream()
+                .map( board->board.toBoard()).toList();
     }
 
 

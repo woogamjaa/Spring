@@ -14,6 +14,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -76,6 +77,8 @@ public class Member implements Serializable, UserDetails {
 
     @NotEmpty(message = "취미 반드시 작성하세요 ! ")
     private String[] hobby;
-    private Date enrollDate;
+
+    @Builder.Default
+    private Date enrollDate=Date.valueOf(LocalDate.now());
 }
 
