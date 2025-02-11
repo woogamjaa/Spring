@@ -20,8 +20,9 @@ public class DemoServiceImpl implements DemoService {
 
     @Autowired
     private DemoDao demoDao; //객체를 특정하지 않고 인터페이스를 줌.
-
+    @Autowired
     private EntityManager entityManager;
+    @Autowired
     private DemoRepository demoRepository;
 
 

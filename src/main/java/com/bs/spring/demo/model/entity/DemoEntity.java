@@ -41,6 +41,4 @@ public class DemoEntity {
         demoEntity.setDevLang(demo.getDevLang()!=null?String.join(",",demo.getDevLang()):null);
         return demoEntity;
     }
-
-
 }
